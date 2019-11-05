@@ -1,18 +1,19 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
     defaultConfig {
-        applicationId "com.arildojr.appband"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
     buildTypes {
         release {
@@ -20,45 +21,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
-    androidExtensions {
-        experimental = true
-    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     /* KOIN */
-    implementation 'org.koin:koin-android-viewmodel:2.0.1'
+    implementation "org.koin:koin-android-viewmodel:2.0.1"
+
+    /* RETROFIT */
+    implementation "com.squareup.retrofit2:retrofit:2.6.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.0.1"
 
     /* COROUTINES */
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
-
-    /* MATERIAL */
-    implementation "com.google.android.material:material:1.1.0-alpha10"
-
-    /* MAPS */
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-
-    /* LOTTIE */
-    implementation "com.airbnb.android:lottie:3.0.7"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
 
     /* MOCKITO */
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
     testImplementation 'org.mockito:mockito-inline:2.21.0'
     testImplementation 'android.arch.core:core-testing:1.1.1'
-
-    /* ROBOLECTRIC */
-    testImplementation 'org.robolectric:robolectric:4.3'
 }
