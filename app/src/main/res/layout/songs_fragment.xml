@@ -40,31 +40,16 @@
                 app:queryBackground="@android:color/transparent" />
         </LinearLayout>
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSongs"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingBottom="16dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llTopHeader">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/vpBannerTop"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="800dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp" />
-
-
-            </LinearLayout>
-
-        </ScrollView>
+            app:layout_constraintTop_toBottomOf="@id/llTopHeader" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

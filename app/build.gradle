@@ -75,4 +75,5 @@ dependencies {
 
     /* ROBOLECTRIC */
     testImplementation 'org.robolectric:robolectric:4.3'
+    implementation project(path: ':data')
 }

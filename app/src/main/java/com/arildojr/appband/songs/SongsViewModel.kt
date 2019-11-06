@@ -1,4 +1,4 @@
-package com.arildojr.appband.core.songs
+package com.arildojr.appband.songs
 
 import androidx.lifecycle.ViewModel
 
