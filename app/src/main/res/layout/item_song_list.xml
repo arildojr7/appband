@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="song"
-            type="com.arildojr.data.songs.model.Song" />
+            type="com.arildojr.data.song.model.Song" />
 
         <variable
             name="adapter"
-            type="com.arildojr.appband.songs.SongsAdapter" />
+            type="com.arildojr.appband.songlist.SongsAdapter" />
 
     </data>
 
@@ -32,6 +33,8 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:importantForAccessibility="no"
+                bind:imageUrl="@{song.thumb}"
+                bind:cornerSize="@{24}"
                 android:src="@drawable/bg_rounded_stroke_gray" />
         </LinearLayout>
 

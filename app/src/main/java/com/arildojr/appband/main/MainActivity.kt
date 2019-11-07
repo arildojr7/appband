@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseActivity
 import com.arildojr.appband.core.home.HomeFragment
-import com.arildojr.appband.songs.SongsFragment
+import com.arildojr.appband.songlist.SongsFragment
 import com.arildojr.appband.databinding.ActivityMainBinding
 
 

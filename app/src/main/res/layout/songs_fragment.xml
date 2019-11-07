@@ -29,15 +29,15 @@
                 android:textColor="@color/black"
                 android:textSize="26sp" />
 
-            <androidx.appcompat.widget.SearchView
+            <SearchView
                 android:id="@+id/svSongFinder"
                 style="@style/Widget.AppCompat.SearchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_rounded_stroke_gray"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
+                android:iconifiedByDefault="false"
+                android:queryBackground="@android:color/transparent" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

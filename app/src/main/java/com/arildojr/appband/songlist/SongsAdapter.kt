@@ -1,17 +1,20 @@
-package com.arildojr.appband.songs
+package com.arildojr.appband.songlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arildojr.appband.core.bindingadapter.BindableAdapter
 import com.arildojr.appband.databinding.ItemSongListBinding
-import com.arildojr.data.songs.model.Song
+import com.arildojr.data.song.model.Song
 
 class SongsAdapter(
     private var items: List<Song>,
     private val openSong: (Song) -> Unit
 ) :
-    RecyclerView.Adapter<SongsAdapter.ViewHolder>(), BindableAdapter<List<Song>> {
+    PagedListAdapter<Song, SongsAdapter.ViewHolder>(PersonDiffCallback()),
+    BindableAdapter<List<Song>> {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -35,10 +38,21 @@ class SongsAdapter(
 
     class ViewHolder(private val binding: ItemSongListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(song: Song, adapter: SongsAdapter) {
+        fun bind(song: Song?, adapter: SongsAdapter) {
             binding.song = song
             binding.adapter = adapter
             binding.executePendingBindings()
         }
+    }
+}
+
+class PersonDiffCallback : DiffUtil.ItemCallback<Song>() {
+
+    override fun areItemsTheSame(oldItem: Song, newItem: Song): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Song, newItem: Song): Boolean {
+        return oldItem == newItem
     }
 }
