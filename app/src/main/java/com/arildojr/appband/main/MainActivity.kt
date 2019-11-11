@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseActivity
-import com.arildojr.appband.core.home.HomeFragment
+import com.arildojr.appband.home.HomeFragment
 import com.arildojr.appband.songlist.SongsFragment
 import com.arildojr.appband.databinding.ActivityMainBinding
-
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 

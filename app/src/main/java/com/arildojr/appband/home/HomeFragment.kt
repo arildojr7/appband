@@ -1,11 +1,7 @@
-package com.arildojr.appband.core.home
+package com.arildojr.appband.home
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseFragment
 import com.arildojr.appband.databinding.HomeFragmentBinding

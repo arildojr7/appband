@@ -10,14 +10,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".core.home.HomeFragment">
+        tools:context=".home.HomeFragment">
 
         <LinearLayout
             android:id="@+id/llTopHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="8dp"
+            android:background="@color/white"
+            android:stateListAnimator="@animator/toolbar_elevation"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -27,29 +32,63 @@
                 android:fontFamily="@font/noto_bold"
                 android:text="@string/menu_songs"
                 android:textColor="@color/black"
-                android:textSize="26sp" />
+                android:textSize="24sp" />
 
-            <SearchView
-                android:id="@+id/svSongFinder"
-                style="@style/Widget.AppCompat.SearchView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_rounded_stroke_gray"
-                android:iconifiedByDefault="false"
-                android:queryBackground="@android:color/transparent" />
+                android:orientation="horizontal">
+
+                <SearchView
+                    android:id="@+id/svSongFinder"
+                    style="@style/Widget.AppCompat.SearchView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_rounded_stroke_gray"
+                    android:iconifiedByDefault="false"
+                    android:queryBackground="@android:color/transparent" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnFilterSongs"
+                    style="@style/Widget.MaterialComponents.FloatingActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/lightGray"
+                    android:elevation="0dp"
+                    android:src="@drawable/ic_filter"
+                    android:translationZ="0dp"
+                    app:elevation="0dp"
+                    app:fabCustomSize="48dp"
+                    app:tint="@color/black" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSongs"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingBottom="16dp"
             android:clipChildren="false"
             android:clipToPadding="false"
+            android:paddingBottom="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llTopHeader" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_heart"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

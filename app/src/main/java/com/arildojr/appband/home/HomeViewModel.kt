@@ -1,4 +1,4 @@
-package com.arildojr.appband.core.home
+package com.arildojr.appband.home
 
 import com.arildojr.appband.core.base.BaseViewModel
 
