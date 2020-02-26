@@ -48,7 +48,7 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
 
         launch {
             withContext(Dispatchers.IO) {
-                //viewModel.getSongs()
+                viewModel.getSongs()
 
             }
         }
@@ -57,7 +57,11 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
     override fun onQueryTextSubmit(p0: String?) = true
 
     override fun onQueryTextChange(p0: String?): Boolean {
-        viewModel.filterSongs(p0)
+        launch {
+            withContext(Dispatchers.IO) {
+                viewModel.filterSongs(p0)
+            }
+        }
 
         return true
     }
@@ -66,8 +70,8 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
         launch {
             delay(128)
             withContext(Dispatchers.Main) {
-                viewModel.getSongs().observe(viewLifecycleOwner, Observer {
-                    adapter2.setData(it.filterNotNull())
+                viewModel.songs.observe(viewLifecycleOwner, Observer {
+                    adapter2.setData(it)
                 })
             }
         }

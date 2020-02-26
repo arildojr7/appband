@@ -2,13 +2,9 @@ package com.arildojr.appband.songdetail
 
 import android.os.Bundle
 import android.util.Base64
-import androidx.core.text.HtmlCompat
-import androidx.lifecycle.Observer
 import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseActivity
 import com.arildojr.appband.databinding.ActivitySongDetailBinding
-import com.arildojr.appband.songlist.SongViewModel
-import org.koin.android.ext.android.inject
 
 class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.activity_song_detail) {
 

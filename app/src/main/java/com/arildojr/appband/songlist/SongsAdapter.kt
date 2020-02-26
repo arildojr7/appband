@@ -2,8 +2,8 @@ package com.arildojr.appband.songlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.arildojr.appband.core.bindingadapter.BindableAdapter
 import com.arildojr.appband.databinding.ItemSongListBinding
@@ -12,8 +12,7 @@ import com.arildojr.data.song.model.Song
 class SongsAdapter(
     private var items: List<Song>,
     private val openSong: (Song) -> Unit
-) :
-    PagedListAdapter<Song, SongsAdapter.ViewHolder>(PersonDiffCallback()),
+) : ListAdapter<Song, SongsAdapter.ViewHolder>(PersonDiffCallback()),
     BindableAdapter<List<Song>> {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -3,100 +3,51 @@ package com.arildojr.appband.songlist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.arildojr.appband.core.base.BaseViewModel
 import com.arildojr.data.song.SongRepository
+import com.arildojr.data.song.exception.FailureRequestException
+import com.arildojr.data.song.exception.FailureRequestWithLocalDataException
 import com.arildojr.data.song.model.Song
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class SongViewModel(private val songRepository: SongRepository) : BaseViewModel() {
 
 
-    private var _songs = MutableLiveData<PagedList<Song>>()
-    val songsa: LiveData<PagedList<Song>> = Transformations.map(_songs) { it }
+    private var _songs = MutableLiveData<List<Song>>()
+    val songs: LiveData<List<Song>> = Transformations.map(_songs) { it }
 
-//    init {
-//
-//        //populateDb()
-//
-//
-//        val factory: DataSource.Factory<Int, Song> = songRepository.getSongs()
-//        val pagedListBuilder: LivePagedListBuilder<Int, Song> = LivePagedListBuilder<Int, Song>(
-//            factory,
-//            50
-//        )
-//        _songs = pagedListBuilder.build()
-//
-//    }
+    suspend fun getSongs() {
+        try {
+            songRepository.getSongs().collect { response ->
 
-    fun getSongsLiveData() = _songs
+                if (response.isSuccessful) {
+                    response.body()?.let { songList ->
+                        _songs.postValue(songList)
+                    }
+                } else {
+                    // error
+                }
+            }
 
-    private fun populateDb() {
-//        launch {
-//            val songs = songRepository.getSongs()
-//            val gambi = songs + songs + songs + songs + songs + songs + songs
-//
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//            songRepository.insertAll(gambi.onEach {
-//                it.id = Random.nextInt(0, Int.MAX_VALUE).toString()
-//            })
-//            delay(200)
-//
-//        }
-    }
-
-    private var filterSongText = MutableLiveData<String>("")
-
-    fun getSongs() = Transformations.switchMap<String, List<Song>>(filterSongText) { input ->
-        if (input == null || input == "" || input == "%%") {
-            //check if the current value is empty load all data else search
-            songRepository.getSongs()
-        } else {
-            songRepository.getSongsFiltered(input)
+        } catch (e: Exception) {
+            when(e) {
+                is FailureRequestException -> {
+                    // error
+                }
+                is FailureRequestWithLocalDataException -> {
+                    // show a toast to notify data is only local
+                }
+            }
         }
-
     }
 
 
-    fun filterSongs(filter: String?) {
-        filterSongText.postValue("%${filter}%")
+    suspend fun filterSongs(filter: String?) {
+        songRepository.getSongsFiltered("%$filter%").collect { response ->
+            _songs.postValue(response.body())
+        }
     }
 
     fun addSong() {

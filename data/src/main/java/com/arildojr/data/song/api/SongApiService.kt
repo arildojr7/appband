@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface SongApiService {
 
-    @GET("/songs")
+    @GET("arildojr.utils/songs.json")
     suspend fun getSongs(): Response<List<Song>>
 }
