@@ -12,5 +12,6 @@ data class Song(
     var id: String,
     val title: String = "",
     val singer: String = "",
+    val tone: String = "",
     val thumb: String? = null
 ) : Parcelable

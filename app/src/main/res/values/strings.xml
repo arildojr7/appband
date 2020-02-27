@@ -6,4 +6,6 @@
     <string name="menu_songs">Músicas</string>
     <string name="menu_favorites">Favoritos</string>
     <string name="menu_profile">Perfil</string>
+
+    <string name="format_tone">Tom: %s</string>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -33,18 +34,19 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:importantForAccessibility="no"
-                bind:imageUrl="@{song.thumb}"
+                android:src="@drawable/bg_rounded_stroke_gray"
                 bind:cornerSize="@{24}"
-                android:src="@drawable/bg_rounded_stroke_gray" />
+                bind:imageUrl="@{song.thumb}" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvMusicTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -52,14 +54,33 @@
                 android:maxLines="1"
                 android:text="@{song.title}"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent"
+                tools:text="Title" />
 
             <TextView
+                android:id="@+id/tvMusicTone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_regular"
+                android:text="@{@string/format_tone(song.tone)}"
+                android:textSize="14sp"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/tvMusicTitle"
+                tools:text="Tom: G" />
+
+            <TextView
+                android:id="@+id/tvMusicSinger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/noto_regular"
                 android:text="@{song.singer}"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:textSize="14sp"
+                bind:layout_constraintStart_toEndOf="@id/tvMusicTone"
+                bind:layout_constraintTop_toTopOf="@id/tvMusicTone"
+                tools:text="Singer" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </layout>
