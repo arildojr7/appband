@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseActivity
 import com.arildojr.appband.databinding.ActivitySetListDetailBinding
-import com.arildojr.appband.songdetail.SongDetailActivity
+import com.arildojr.appband.songlist.SongDetailActivity
 import com.arildojr.appband.songlist.SongsAdapter
 
 class SetListDetailActivity :

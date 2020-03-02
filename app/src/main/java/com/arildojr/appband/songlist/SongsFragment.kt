@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseFragment
 import com.arildojr.appband.databinding.SongsFragmentBinding
-import com.arildojr.appband.songdetail.SongDetailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,7 +15,7 @@ import org.koin.android.ext.android.inject
 class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment),
     SearchView.OnQueryTextListener {
 
-    private val viewModel: SongViewModel by inject()
+    private val viewModel: SongsViewModel by inject()
     private val adapter2 = SongsAdapter(emptyList()) {
         val bundle = Bundle()
         bundle.putParcelable("song", it)

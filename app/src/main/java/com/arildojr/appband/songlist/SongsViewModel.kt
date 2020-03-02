@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-class SongViewModel(private val songRepository: SongRepository) : BaseViewModel() {
+class SongsViewModel(private val songRepository: SongRepository) : BaseViewModel() {
 
     private var _songs = MutableLiveData<List<Song>>()
     val songs: LiveData<List<Song>> = Transformations.map(_songs) { it }

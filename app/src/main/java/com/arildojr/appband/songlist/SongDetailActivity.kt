@@ -1,4 +1,4 @@
-package com.arildojr.appband.songdetail
+package com.arildojr.appband.songlist
 
 import android.os.Bundle
 import android.os.Handler
