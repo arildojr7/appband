@@ -4,13 +4,14 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseActivity
-import com.arildojr.appband.home.HomeFragment
-import com.arildojr.appband.songlist.SongsFragment
 import com.arildojr.appband.databinding.ActivityMainBinding
+import com.arildojr.appband.home.HomeFragment
+import com.arildojr.appband.setlist.SetListFragment
+import com.arildojr.appband.songlist.SongsFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    enum class MenuEnum { HOME, SONGS, FAVORITE, PROFILE }
+    enum class MenuEnum { HOME, SONGS, SET_LIST, PROFILE }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +23,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 }
                 R.id.menu_songs -> {
                     setFragment(MenuEnum.SONGS)
+                }
+                R.id.menu_set_list -> {
+                    setFragment(MenuEnum.SET_LIST)
                 }
             }
             true
@@ -60,7 +64,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
         }
 
-        MenuEnum.FAVORITE -> {
+        MenuEnum.SET_LIST -> {
+            var fragment = supportFragmentManager.findFragmentByTag(MenuEnum.SET_LIST.name)
+
+            if (fragment != null) {
+                (fragment as SetListFragment).scrollToTop()
+            } else {
+                fragment = SetListFragment()
+                setFragment(fragment, MenuEnum.SET_LIST.name)
+            }
 
         }
 
@@ -68,7 +80,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         }
     }
-
 
 
 }

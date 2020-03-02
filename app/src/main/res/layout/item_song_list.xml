@@ -64,23 +64,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_regular"
-                android:text="@{@string/format_tone(song.tone)}"
+                android:text="@{@string/format_tone(song.tone, song.singer)}"
                 android:textSize="14sp"
                 bind:layout_constraintStart_toStartOf="parent"
                 bind:layout_constraintTop_toBottomOf="@id/tvMusicTitle"
-                tools:text="Tom: G" />
+                tools:text="Tom: G - Michele Borges" />
 
-            <TextView
-                android:id="@+id/tvMusicSinger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/noto_regular"
-                android:text="@{song.singer}"
-                android:textSize="14sp"
-                bind:layout_constraintStart_toEndOf="@id/tvMusicTone"
-                bind:layout_constraintTop_toTopOf="@id/tvMusicTone"
-                tools:text="Singer" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </layout>

@@ -9,7 +9,6 @@ import com.arildojr.appband.core.base.BaseFragment
 import com.arildojr.appband.databinding.SongsFragmentBinding
 import com.arildojr.appband.songdetail.SongDetailActivity
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
@@ -30,7 +29,6 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         binding.svSongFinder.setOnQueryTextListener(this)
 
         binding.rvSongs.apply {
@@ -39,11 +37,6 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
             viewTreeObserver.addOnScrollChangedListener {
                 binding.llTopHeader.isSelected = this.canScrollVertically(-1)
             }
-        }
-
-
-        binding.fabAdd.setOnClickListener {
-            viewModel.addSong()
         }
 
         launch {
@@ -68,7 +61,6 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
 
     override fun subscribeUi() {
         launch {
-            delay(128)
             withContext(Dispatchers.Main) {
                 viewModel.songs.observe(viewLifecycleOwner, Observer {
                     adapter2.setData(it)

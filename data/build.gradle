@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 21
@@ -19,12 +19,12 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            buildConfigField "String", "BASE_URL", "\"https://s3.amazonaws.com\""
+            buildConfigField "String", "BASE_URL", "\"http://appband.us-east-1.elasticbeanstalk.com\""
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"https://s3.amazonaws.com\""
+            buildConfigField "String", "BASE_URL", "\"http://demo8510789.mockable.io\""
         }
     }
     androidExtensions {

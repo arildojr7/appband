@@ -35,7 +35,7 @@ fun ImageView.imageFromUrl(
 fun loadImageView(image: ImageView, imageUrl: String?) {
     Glide.with(image.context)
         .load(imageUrl)
-        .placeholder(R.drawable.ic_heart)
+        .placeholder(R.mipmap.placeholder)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .apply(RequestOptions().dontTransform())
         .transition(DrawableTransitionOptions.withCrossFade())
@@ -50,7 +50,7 @@ fun loadRoundedImageView(
 ) {
     Glide.with(image.context)
         .load(imageUrl)
-        .placeholder(R.drawable.ic_heart)
+        .placeholder(R.mipmap.placeholder)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .apply(RequestOptions().dontTransform())
         .transform(

@@ -14,7 +14,6 @@ import kotlin.random.Random
 
 class SongViewModel(private val songRepository: SongRepository) : BaseViewModel() {
 
-
     private var _songs = MutableLiveData<List<Song>>()
     val songs: LiveData<List<Song>> = Transformations.map(_songs) { it }
 
@@ -32,7 +31,7 @@ class SongViewModel(private val songRepository: SongRepository) : BaseViewModel(
             }
 
         } catch (e: Exception) {
-            when(e) {
+            when (e) {
                 is FailureRequestException -> {
                     // error
                 }
@@ -42,7 +41,6 @@ class SongViewModel(private val songRepository: SongRepository) : BaseViewModel(
             }
         }
     }
-
 
     suspend fun filterSongs(filter: String?) {
         songRepository.getSongsFiltered("%$filter%").collect { response ->

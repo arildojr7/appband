@@ -2,6 +2,7 @@ package com.arildojr.appband.core.util
 
 import android.util.DisplayMetrics
 import android.util.TypedValue
+import java.text.SimpleDateFormat
 import kotlin.math.roundToInt
 
 fun Int.convertDpToPx(displayMetrics: DisplayMetrics): Int {

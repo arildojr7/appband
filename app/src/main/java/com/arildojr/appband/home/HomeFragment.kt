@@ -6,20 +6,18 @@ import com.arildojr.appband.R
 import com.arildojr.appband.core.base.BaseFragment
 import com.arildojr.appband.databinding.HomeFragmentBinding
 import com.arildojr.appband.main.MainViewPagerAdapter
-
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
+
+    private val viewModel: HomeViewModel by viewModel()
 
     companion object {
         fun newInstance() = HomeFragment()
     }
 
-    private lateinit var viewModel: HomeViewModel
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
 
         setupBannerViewPager()
     }
