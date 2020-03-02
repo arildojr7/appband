@@ -26,7 +26,7 @@
         android:layout_margin="8dp"
         android:background="@drawable/bg_rounded_light_gray"
         android:foreground="?attr/selectableItemBackground"
-        android:onClick="@{() -> adapter.onItemClicked(setList)}"
+        android:onClick="@{() -> adapter.onItemClicked(setList, setListNumber)}"
         android:padding="12dp">
 
         <TextView

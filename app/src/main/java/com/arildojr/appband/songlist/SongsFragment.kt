@@ -26,6 +26,7 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
     companion object {
         fun newInstance() = SongsFragment()
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

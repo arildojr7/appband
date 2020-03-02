@@ -11,7 +11,7 @@ import com.arildojr.data.setlist.model.SetList
 
 class SetListAdapter(
     private var items: List<SetList>,
-    private val openSetList: (SetList) -> Unit
+    private val openSetList: (SetList, Int) -> Unit
 ) : ListAdapter<SetList, SetListAdapter.ViewHolder>(SetListDiffCallback()),
     BindableAdapter<List<SetList>> {
 
@@ -31,8 +31,8 @@ class SetListAdapter(
         notifyDataSetChanged()
     }
 
-    fun onItemClicked(item: SetList) {
-        openSetList(item)
+    fun onItemClicked(item: SetList, position: Int) {
+        openSetList(item, position)
     }
 
     class ViewHolder(private val binding: ItemSetListBinding) :
