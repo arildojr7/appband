@@ -10,8 +10,10 @@ import kotlinx.android.parcel.Parcelize
 data class Song(
     @PrimaryKey
     var id: String,
-    val title: String = "",
-    val singer: String = "",
-    val tone: String = "",
+    val title: String? = null,
+    val singer: String? = null,
+    val tone: String? = null,
+    val capo: Int? = null,
+    val chord: String? = null,
     val thumb: String? = null
 ) : Parcelable

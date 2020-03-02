@@ -1,5 +1,6 @@
 package com.arildojr.data
 
+import com.arildojr.data.setlist.api.SetListApiService
 import com.arildojr.data.song.api.SongApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,5 +39,8 @@ class RetrofitInitializer {
 
     fun songApiService(): SongApiService =
         createNetworkClient().create(SongApiService::class.java)
+
+    fun setListApiService(): SetListApiService =
+        createNetworkClient().create(SetListApiService::class.java)
 
 }
