@@ -6,7 +6,7 @@ import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
 import dev.arildo.appband.databinding.ActivityMainBinding
 import dev.arildo.appband.home.HomeFragment
-import dev.arildo.appband.setlist.SetListFragment
+import dev.arildo.appband.setlist.fragment.SetListFragment
 import dev.arildo.appband.songlist.SongsFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -76,7 +76,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 if (fragment != null) {
                     (fragment as SetListFragment).scrollToTop()
                 } else {
-                    fragment = SetListFragment()
+                    fragment =
+                        SetListFragment()
                     setFragment(fragment, MenuEnum.SET_LIST.name)
                 }
 

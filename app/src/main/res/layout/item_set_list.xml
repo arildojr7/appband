@@ -12,7 +12,7 @@
 
         <variable
             name="adapter"
-            type="dev.arildo.appband.setlist.SetListAdapter" />
+            type="dev.arildo.appband.setlist.adapter.SetListAdapter" />
 
         <variable
             name="setListNumber"
