@@ -1,4 +1,4 @@
-package dev.arildo.appband.setlist
+package dev.arildo.appband.setlist.activity
 
 import android.content.Intent
 import android.os.Bundle

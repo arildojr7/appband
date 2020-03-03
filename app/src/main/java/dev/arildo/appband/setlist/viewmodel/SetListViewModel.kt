@@ -1,4 +1,4 @@
-package dev.arildo.appband.setlist
+package dev.arildo.appband.setlist.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package dev.arildo.appband.setlist
+package dev.arildo.appband.setlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,13 +12,17 @@ import com.arildojr.data.setlist.model.SetList
 class SetListAdapter(
     private var items: List<SetList>,
     private val openSetList: (SetList, Int) -> Unit
-) : ListAdapter<SetList, SetListAdapter.ViewHolder>(SetListDiffCallback()),
+) : ListAdapter<SetList, SetListAdapter.ViewHolder>(
+    SetListDiffCallback()
+),
     BindableAdapter<List<SetList>> {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemSetListBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount() = items.size
