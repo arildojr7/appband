@@ -4,7 +4,7 @@
     <!--    menu strings-->
     <string name="menu_home">Home</string>
     <string name="menu_songs">Músicas</string>
-    <string name="menu_set_list">SetList</string>
+    <string name="menu_set_list">SetLists</string>
     <string name="menu_profile">Perfil</string>
 
     <string name="format_tone">Tom: %s - %s</string>

@@ -2,6 +2,7 @@ package dev.arildo.appband.setlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import dev.arildo.appband.R
@@ -48,6 +49,7 @@ class SetListFragment : BaseFragment<FragmentSetListBinding>(R.layout.fragment_s
             withContext(Dispatchers.Main) {
                 viewModel.setList.observe(viewLifecycleOwner, Observer {
                     adapter2.setData(it)
+                    binding.pbLoaderSetLists.visibility = View.GONE
                 })
             }
         }

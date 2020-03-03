@@ -2,6 +2,7 @@ package dev.arildo.appband.songlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import dev.arildo.appband.R
@@ -64,6 +65,7 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
             withContext(Dispatchers.Main) {
                 viewModel.songs.observe(viewLifecycleOwner, Observer {
                     adapter2.setData(it)
+                    binding.pbLoaderSongs.visibility = View.GONE
                 })
             }
         }
