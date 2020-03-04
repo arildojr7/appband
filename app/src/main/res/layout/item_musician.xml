@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="musician"
+            type="com.arildojr.data.musician.model.Musician" />
+
+        <variable
+            name="adapter"
+            type="dev.arildo.appband.setlist.adapter.SetListMusiciansAdapter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> adapter.onItemClicked(musician)}"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/bg_rounded_stroke_gray"
+                bind:cornerSize="@{24}"
+                bind:imageUrl="@{musician.name}" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMusicName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/noto_medium"
+                android:maxLines="1"
+                android:text="@{musician.name}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent"
+                tools:text="Musician name" />
+
+            <TextView
+                android:id="@+id/tvMusicTone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_regular"
+                android:text="Guitarrista"
+                android:textSize="14sp"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@id/tvMusicName"
+                tools:text="Tom: G - Michele Borges" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

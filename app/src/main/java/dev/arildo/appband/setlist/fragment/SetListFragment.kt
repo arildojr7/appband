@@ -21,13 +21,9 @@ class SetListFragment : BaseFragment<FragmentSetListBinding>(R.layout.fragment_s
 
     private val viewModel: SetListViewModel by inject()
     private val adapter2 =
-        SetListAdapter(emptyList()) { setList, position ->
+        SetListAdapter(emptyList()) { setList ->
             val bundle = Bundle()
             bundle.putParcelable("setList", setList)
-            bundle.putString(
-                "setListName",
-                getString(R.string.set_list_number, position.toString())
-            )
             startActivity(
                 Intent(
                     context,

@@ -5,11 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.lifecycle.Observer
+import com.arildojr.data.musician.model.Musician
 import com.arildojr.data.song.model.Song
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
 import dev.arildo.appband.databinding.ActivitySetListSetBinding
+import dev.arildo.appband.setlist.adapter.SetListMusiciansAdapter
 import dev.arildo.appband.setlist.adapter.SetListSongsAdapter
+import dev.arildo.appband.setlist.customview.SelectMusiciansDialog
 import dev.arildo.appband.setlist.customview.SelectSongsDialog
 import dev.arildo.appband.setlist.viewmodel.SetListSetViewModel
 import dev.arildo.appband.songlist.activity.SongDetailActivity
@@ -24,13 +27,14 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
 
     private val viewModel: SetListSetViewModel by inject()
     private val songs = mutableListOf<Song>()
+    private val musicians = mutableListOf<Musician>()
     private val datePickerDialog: DatePickerDialog by lazy {
         DatePickerDialog(
             this, this, 2020, 1, 1
         )
     }
 
-    private val adapter2 = SetListSongsAdapter(emptyList()) {
+    private val adapterSelectedSongs = SetListSongsAdapter(emptyList()) {
         val bundle = Bundle()
         bundle.putParcelable("song", it)
         startActivity(Intent(this, SongDetailActivity::class.java).apply {
@@ -41,6 +45,8 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
         })
     }
 
+    private val adapterSelectedMusicians = SetListMusiciansAdapter(emptyList()) { }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -49,6 +55,7 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
         setupScrollView()
 
         launch {
+            viewModel.getMusicians()
             viewModel.getSongs()
         }
     }
@@ -81,32 +88,59 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
                 }
             ).setData(songs).build()
         }
-        binding.etSelectDate.apply {
-            setOnClickListener {
-                datePickerDialog.show()
-            }
-            showSoftInputOnFocus = false
-            isFocusableInTouchMode = false
+
+        binding.fabAddMusicians.setOnClickListener {
+            SelectMusiciansDialog.Companion.Builder(this).setListener(
+                object : SelectMusiciansDialog.SelectMusiciansDialogListener {
+                    override fun onSelectMusician(musician: Musician, dialog: SelectMusiciansDialog?) {
+                        viewModel.addSelectedMusician(musician)
+                        dialog?.alertDialog?.dismiss()
+
+
+                    }
+
+                    override fun onDismissDialog(dialog: SelectMusiciansDialog?) {
+                        dialog?.alertDialog?.dismiss()
+                    }
+                }
+            ).setData(musicians).build()
+        }
+        binding.btnSelectDate.setOnClickListener {
+            datePickerDialog.show()
         }
 
         binding.fabSaveSetList.setOnClickListener {
-            launch { viewModel.createSetList() }
+            launch {
+                viewModel.createSetList()
+                delay(200)
+                finish()
+            }
         }
     }
 
     private fun setupRecycler() {
         binding.rvSongs.apply {
-            adapter = adapter2
+            adapter = adapterSelectedSongs
+        }
+        binding.rvMusicians.apply {
+            adapter = adapterSelectedMusicians
         }
     }
 
     override fun subscribeUi() {
         viewModel.selectedSongs.observe(this, Observer {
-            adapter2.setData(it)
+            adapterSelectedSongs.setData(it)
+        })
+
+        viewModel.selectedMusicians.observe(this, Observer {
+            adapterSelectedMusicians.setData(it)
         })
 
         viewModel.songs.observe(this, Observer {
             songs.addAll(it)
+        })
+        viewModel.musicians.observe(this, Observer {
+            musicians.addAll(it)
         })
     }
 
@@ -116,9 +150,7 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
         c[Calendar.MONTH] = month
         c[Calendar.DAY_OF_MONTH] = dayOfMonth
 
-        binding.etSelectDate.setText(
-            SimpleDateFormat("dd/MM/yyyy").format(c.time)
-        )
+        binding.btnSelectDate.text = SimpleDateFormat("dd/MM/yyyy").format(c.time)
 
         viewModel.setDateTimestamp(c.time.time)
     }

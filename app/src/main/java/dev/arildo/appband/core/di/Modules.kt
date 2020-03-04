@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 private val songModules = module {
     viewModel { SetListViewModel(get()) }
-    viewModel { SetListSetViewModel(get(), get()) }
+    viewModel { SetListSetViewModel(get(), get(), get()) }
     viewModel { SongsViewModel(get()) }
     viewModel { HomeViewModel() }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSongs"
+        android:id="@+id/rvMusicians"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"
@@ -18,6 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="3"
-        tools:listitem="@layout/item_set_list_set_song" />
+        tools:listitem="@layout/item_musician" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

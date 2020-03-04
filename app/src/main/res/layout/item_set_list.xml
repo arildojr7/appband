@@ -14,10 +14,6 @@
             name="adapter"
             type="dev.arildo.appband.setlist.adapter.SetListAdapter" />
 
-        <variable
-            name="setListNumber"
-            type="Integer" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +22,7 @@
         android:layout_margin="8dp"
         android:background="@drawable/bg_rounded_light_gray"
         android:foreground="?attr/selectableItemBackground"
-        android:onClick="@{() -> adapter.onItemClicked(setList, setListNumber)}"
+        android:onClick="@{() -> adapter.onItemClicked(setList)}"
         android:padding="12dp">
 
         <TextView
@@ -34,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_bold"
-            android:text="@{@string/set_list_number(setListNumber)}"
+            android:text="@{@string/set_list_number(setList.number)}"
             android:textColor="@android:color/black"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"

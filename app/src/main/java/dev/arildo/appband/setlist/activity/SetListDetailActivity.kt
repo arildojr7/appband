@@ -32,7 +32,7 @@ class SetListDetailActivity :
             adapter2.setData(binding.setList?.song)
 
             binding.toolbar.run {
-                title = bundle?.getString("setListName")
+                title = getString(R.string.set_list_number, binding.setList?.number.toString())
                 setSupportActionBar(this)
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -47,11 +47,6 @@ class SetListDetailActivity :
                 binding.llTopHeader.isSelected = this.canScrollVertically(-1)
             }
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 
 }

@@ -11,7 +11,7 @@ import com.arildojr.data.setlist.model.SetList
 
 class SetListAdapter(
     private var items: List<SetList>,
-    private val openSetList: (SetList, Int) -> Unit
+    private val openSetList: (SetList) -> Unit
 ) : ListAdapter<SetList, SetListAdapter.ViewHolder>(
     SetListDiffCallback()
 ),
@@ -28,23 +28,22 @@ class SetListAdapter(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(items[position], this, position)
+        holder.bind(items[position], this)
 
     override fun setData(data: List<SetList>?) {
         this.items = data.orEmpty()
         notifyDataSetChanged()
     }
 
-    fun onItemClicked(item: SetList, position: Int) {
-        openSetList(item, position)
+    fun onItemClicked(item: SetList) {
+        openSetList(item)
     }
 
     class ViewHolder(private val binding: ItemSetListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(setList: SetList?, adapter: SetListAdapter, position: Int) {
+        fun bind(setList: SetList?, adapter: SetListAdapter) {
             binding.setList = setList
             binding.adapter = adapter
-            binding.setListNumber = position + 1
             binding.executePendingBindings()
         }
     }

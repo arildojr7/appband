@@ -14,6 +14,6 @@ class SetListViewModel(private val setListRepository: SetListRepository) : BaseV
 
 
     suspend fun getSetLists() {
-        _setList.postValue(setListRepository.getSetLists().body())
+        _setList.postValue(setListRepository.getSetLists().body()?.reversed())
     }
 }
