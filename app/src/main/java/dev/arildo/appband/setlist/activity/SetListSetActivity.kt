@@ -68,14 +68,12 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
                 object : SelectSongsDialog.SelectSongsDialogListener {
                     override fun onSelectSong(song: Song, dialog: SelectSongsDialog?) {
                         viewModel.addSelectedSong(song)
-
+                        dialog?.alertDialog?.dismiss()
 
                         launch {
                             delay(100)
                             binding.svContainer.apply { smoothScrollTo(0, height) }
                         }
-                        dialog?.alertDialog?.dismiss()
-
                     }
 
                     override fun onDismissDialog(dialog: SelectSongsDialog?) {
