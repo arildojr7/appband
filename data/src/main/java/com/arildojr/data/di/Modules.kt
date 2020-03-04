@@ -1,6 +1,9 @@
 package com.arildojr.data.di
 
 import com.arildojr.data.RetrofitInitializer
+import com.arildojr.data.musician.MusicianRepository
+import com.arildojr.data.musician.MusicianRepositoryImpl
+import com.arildojr.data.musician.datasource.remote.MusicianRemoteDataSource
 import com.arildojr.data.setlist.SetListRepository
 import com.arildojr.data.setlist.SetListRepositoryImpl
 import com.arildojr.data.setlist.datasource.remote.SetListRemoteDataSource
@@ -19,17 +22,20 @@ private val dbModule = module {
 private val apiServiceModule = module {
     single { RetrofitInitializer().songApiService() }
     single { RetrofitInitializer().setListApiService() }
+    single { RetrofitInitializer().musicianApiService() }
 }
 
 private val repositoryModule = module {
     single<SongRepository> { SongRepositoryImpl(get(), get()) }
     single<SetListRepository> { SetListRepositoryImpl(get()) }
+    single<MusicianRepository> { MusicianRepositoryImpl(get()) }
 }
 
 private val dataSourceModule = module {
     single { SongRemoteDataSource(get()) }
     single { SongLocalDataSource(get()) }
     single { SetListRemoteDataSource(get()) }
+    single { MusicianRemoteDataSource(get()) }
 }
 
 fun getDataModules() = listOf(apiServiceModule, repositoryModule, dataSourceModule, dbModule)

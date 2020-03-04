@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class SetList(
     var id: String? = null,
     var date: Long? = 0L,
+    var number: Int? = null,
     var song: List<Song> = emptyList()
 ) : Parcelable {
 
