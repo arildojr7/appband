@@ -1,13 +1,13 @@
-package dev.arildo.appband.main
+package dev.arildo.appband.main.activity
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
 import dev.arildo.appband.databinding.ActivityMainBinding
-import dev.arildo.appband.home.HomeFragment
+import dev.arildo.appband.home.fragment.HomeFragment
 import dev.arildo.appband.setlist.fragment.SetListFragment
-import dev.arildo.appband.songlist.SongsFragment
+import dev.arildo.appband.songlist.fragment.SongsFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
@@ -65,7 +65,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 if (fragment != null) {
                     (fragment as SongsFragment).scrollToTop()
                 } else {
-                    fragment = SongsFragment()
+                    fragment =
+                        SongsFragment()
                     setFragment(fragment, MenuEnum.SONGS.name)
                 }
             }

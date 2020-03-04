@@ -5,22 +5,23 @@ import android.os.Bundle
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
 import dev.arildo.appband.databinding.ActivitySetListDetailBinding
-import dev.arildo.appband.songlist.SongDetailActivity
-import dev.arildo.appband.songlist.SongsAdapter
+import dev.arildo.appband.songlist.activity.SongDetailActivity
+import dev.arildo.appband.songlist.adapter.SongsAdapter
 
 class SetListDetailActivity :
     BaseActivity<ActivitySetListDetailBinding>(R.layout.activity_set_list_detail) {
 
-    private val adapter2 = SongsAdapter(emptyList()) {
-        val bundle = Bundle()
-        bundle.putParcelable("song", it)
-        startActivity(Intent(this, SongDetailActivity::class.java).apply {
-            putExtra(
-                "bundle",
-                bundle
-            )
-        })
-    }
+    private val adapter2 =
+        SongsAdapter(emptyList()) {
+            val bundle = Bundle()
+            bundle.putParcelable("song", it)
+            startActivity(Intent(this, SongDetailActivity::class.java).apply {
+                putExtra(
+                    "bundle",
+                    bundle
+                )
+            })
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

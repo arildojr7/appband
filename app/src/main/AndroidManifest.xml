@@ -18,9 +18,9 @@
         tools:targetApi="m">
         <activity android:name=".setlist.activity.SetListSetActivity"></activity>
         <activity android:name=".setlist.activity.SetListDetailActivity" />
-        <activity android:name=".songlist.SongDetailActivity" />
+        <activity android:name=".songlist.activity.SongDetailActivity" />
         <activity
-            android:name=".main.MainActivity"
+            android:name=".main.activity.MainActivity"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

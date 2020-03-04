@@ -1,9 +1,9 @@
 package dev.arildo.appband.core.di
 
-import dev.arildo.appband.home.HomeViewModel
+import dev.arildo.appband.home.viewmodel.HomeViewModel
 import dev.arildo.appband.setlist.viewmodel.SetListSetViewModel
 import dev.arildo.appband.setlist.viewmodel.SetListViewModel
-import dev.arildo.appband.songlist.SongsViewModel
+import dev.arildo.appband.songlist.viewmodel.SongsViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

@@ -1,4 +1,4 @@
-package dev.arildo.appband.main
+package dev.arildo.appband.main.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -11,7 +11,7 @@
 
         <variable
             name="adapter"
-            type="dev.arildo.appband.songlist.SongsAdapter" />
+            type="dev.arildo.appband.songlist.adapter.SongsAdapter" />
 
     </data>
 

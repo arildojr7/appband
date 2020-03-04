@@ -1,4 +1,4 @@
-package dev.arildo.appband.songlist
+package dev.arildo.appband.songlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,13 +12,17 @@ import com.arildojr.data.song.model.Song
 class SongsAdapter(
     private var items: List<Song>,
     private val openSong: (Song) -> Unit
-) : ListAdapter<Song, SongsAdapter.ViewHolder>(PersonDiffCallback()),
+) : ListAdapter<Song, SongsAdapter.ViewHolder>(
+    PersonDiffCallback()
+),
     BindableAdapter<List<Song>> {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemSongListBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount() = items.size

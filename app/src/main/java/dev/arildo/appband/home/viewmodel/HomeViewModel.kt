@@ -1,4 +1,4 @@
-package dev.arildo.appband.home
+package dev.arildo.appband.home.viewmodel
 
 import dev.arildo.appband.core.base.BaseViewModel
 

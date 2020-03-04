@@ -1,4 +1,4 @@
-package dev.arildo.appband.songlist
+package dev.arildo.appband.songlist.activity
 
 import android.os.Bundle
 import android.os.Handler

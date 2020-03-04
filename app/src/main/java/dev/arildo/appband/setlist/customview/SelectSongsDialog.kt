@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import com.arildojr.data.song.model.Song
 import dev.arildo.appband.R
-import dev.arildo.appband.songlist.SongsAdapter
+import dev.arildo.appband.songlist.adapter.SongsAdapter
 import kotlinx.android.synthetic.main.dialog_select_songs.view.*
 
 class SelectSongsDialog {
@@ -15,9 +15,10 @@ class SelectSongsDialog {
         fun onDismissDialog(dialog: SelectSongsDialog?)
     }
 
-    private val adapter2 = SongsAdapter(emptyList()) {
-        listener.onSelectSong(it, this)
-    }
+    private val adapter2 =
+        SongsAdapter(emptyList()) {
+            listener.onSelectSong(it, this)
+        }
 
     lateinit var alertDialog: AlertDialog
     private lateinit var listener: SelectSongsDialogListener

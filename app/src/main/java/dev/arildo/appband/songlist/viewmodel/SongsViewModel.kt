@@ -1,4 +1,4 @@
-package dev.arildo.appband.songlist
+package dev.arildo.appband.songlist.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

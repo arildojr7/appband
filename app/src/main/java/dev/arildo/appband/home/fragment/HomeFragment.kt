@@ -1,11 +1,11 @@
-package dev.arildo.appband.home
+package dev.arildo.appband.home.fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseFragment
 import dev.arildo.appband.databinding.HomeFragmentBinding
-import dev.arildo.appband.main.MainViewPagerAdapter
+import dev.arildo.appband.home.viewmodel.HomeViewModel
+import dev.arildo.appband.main.adapter.MainViewPagerAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
@@ -28,7 +28,8 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
             add("https://www.dhresource.com/0x0/f2/albu/g6/M00/AF/99/rBVaR1vSe-KAa_8IAAKfo_7x0xE696.jpg")
             add("https://observatoriodatelevisao.bol.uol.com.br/wp-content/uploads/2017/10/dragon-ball-z-e-exibido-pela-rede-brasi-2-696x392.png")
         }
-        val homeAdapter = MainViewPagerAdapter(urls)
+        val homeAdapter =
+            MainViewPagerAdapter(urls)
 
         binding.vpBannerTop.adapter = homeAdapter
     }

@@ -1,4 +1,4 @@
-package dev.arildo.appband.songlist
+package dev.arildo.appband.songlist.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,9 @@ import androidx.lifecycle.Observer
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseFragment
 import dev.arildo.appband.databinding.SongsFragmentBinding
+import dev.arildo.appband.songlist.adapter.SongsAdapter
+import dev.arildo.appband.songlist.viewmodel.SongsViewModel
+import dev.arildo.appband.songlist.activity.SongDetailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,11 +20,17 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
     SearchView.OnQueryTextListener {
 
     private val viewModel: SongsViewModel by inject()
-    private val adapter2 = SongsAdapter(emptyList()) {
-        val bundle = Bundle()
-        bundle.putParcelable("song", it)
-        startActivity(Intent(context, SongDetailActivity::class.java).apply { putExtra("bundle", bundle) })
-    }
+    private val adapter2 =
+        SongsAdapter(emptyList()) {
+            val bundle = Bundle()
+            bundle.putParcelable("song", it)
+            startActivity(Intent(context, SongDetailActivity::class.java).apply {
+                putExtra(
+                    "bundle",
+                    bundle
+                )
+            })
+        }
 
     companion object {
         fun newInstance() = SongsFragment()
