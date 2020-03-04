@@ -19,7 +19,6 @@ import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.activity_set_list_set),
     DatePickerDialog.OnDateSetListener {
 
@@ -120,6 +119,8 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
             SimpleDateFormat("dd/MM/yyyy").format(c.time)
 
         )
+
+        viewModel.setDateTimestamp(c.time.time)
 
     }
 }

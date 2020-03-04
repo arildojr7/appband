@@ -18,6 +18,8 @@ class SetListSetViewModel(private val songRepository: SongRepository) : BaseView
     private var _selectedSongs = MutableLiveData<List<Song>>()
     val selectedSongs: LiveData<List<Song>> = Transformations.map(_selectedSongs) { it }
 
+    private var selectedDateTimestamp: Long = 0L
+
     suspend fun getSongs() {
         try {
             songRepository.getSongs().collect { response ->
@@ -50,6 +52,10 @@ class SetListSetViewModel(private val songRepository: SongRepository) : BaseView
         }
         _selectedSongs.postValue(selectedSongs)
 
+    }
+
+    fun setDateTimestamp(timestamp: Long) {
+        selectedDateTimestamp = timestamp
     }
 
     suspend fun filterSongs(filter: String?) {
