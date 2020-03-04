@@ -118,10 +118,8 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
 
         binding.etSelectDate.setText(
             SimpleDateFormat("dd/MM/yyyy").format(c.time)
-
         )
 
         viewModel.setDateTimestamp(c.time.time)
-
     }
 }

@@ -18,6 +18,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp"
+            android:background="@color/white"
+            android:stateListAnimator="@animator/toolbar_elevation"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -37,7 +39,10 @@
             android:layout_height="0dp"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:padding="8dp"
+            android:paddingTop="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="96dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llTopHeader" />
 

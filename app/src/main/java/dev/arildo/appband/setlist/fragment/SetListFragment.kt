@@ -40,13 +40,16 @@ class SetListFragment : BaseFragment<FragmentSetListBinding>(R.layout.fragment_s
 
         setupRecycler()
         setupCreateSetListButton()
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         launch {
             withContext(Dispatchers.IO) {
                 viewModel.getSetLists()
             }
         }
-
     }
 
     private fun setupRecycler() {
