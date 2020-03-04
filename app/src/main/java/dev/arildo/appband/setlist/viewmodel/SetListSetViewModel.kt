@@ -3,6 +3,8 @@ package dev.arildo.appband.setlist.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.arildojr.data.setlist.SetListRepository
+import com.arildojr.data.setlist.dto.SetListDTO
 import com.arildojr.data.song.SongRepository
 import com.arildojr.data.song.exception.FailureRequestException
 import com.arildojr.data.song.exception.FailureRequestWithLocalDataException
@@ -10,7 +12,10 @@ import com.arildojr.data.song.model.Song
 import dev.arildo.appband.core.base.BaseViewModel
 import kotlinx.coroutines.flow.collect
 
-class SetListSetViewModel(private val songRepository: SongRepository) : BaseViewModel() {
+class SetListSetViewModel(
+    private val songRepository: SongRepository,
+    private val setListRepository: SetListRepository
+) : BaseViewModel() {
 
     private var _songs = MutableLiveData<List<Song>>()
     val songs: LiveData<List<Song>> = Transformations.map(_songs) { it }
@@ -43,6 +48,16 @@ class SetListSetViewModel(private val songRepository: SongRepository) : BaseView
                 }
             }
         }
+    }
+
+    suspend fun createSetList() {
+        setListRepository.createSetList(
+            SetListDTO(
+                selectedDateTimestamp,
+                _selectedSongs.value?.map { it.id }.orEmpty()
+            )
+        )
+
     }
 
     fun addSelectedSong(song: Song) {

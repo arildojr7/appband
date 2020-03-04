@@ -81,15 +81,16 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
                 }
             ).setData(songs).build()
         }
-        binding.fabSaveSetList.setOnClickListener {
-            finish()
-        }
         binding.etSelectDate.apply {
             setOnClickListener {
                 datePickerDialog.show()
             }
             showSoftInputOnFocus = false
             isFocusableInTouchMode = false
+        }
+
+        binding.fabSaveSetList.setOnClickListener {
+            launch { viewModel.createSetList() }
         }
     }
 
