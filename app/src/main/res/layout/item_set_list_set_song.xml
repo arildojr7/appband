@@ -21,6 +21,8 @@
         android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> adapter.onItemClicked(song)}"
         android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
 
