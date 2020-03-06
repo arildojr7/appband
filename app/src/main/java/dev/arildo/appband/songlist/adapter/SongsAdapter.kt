@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.arildo.appband.core.bindingadapter.BindableAdapter
 import dev.arildo.appband.databinding.ItemSongListBinding
-import com.arildojr.data.song.model.Song
+import dev.arildo.data.song.model.Song
 
 class SongsAdapter(
     private var items: List<Song>,

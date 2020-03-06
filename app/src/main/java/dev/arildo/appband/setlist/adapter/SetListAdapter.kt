@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.arildo.appband.core.bindingadapter.BindableAdapter
 import dev.arildo.appband.databinding.ItemSetListBinding
-import com.arildojr.data.setlist.model.SetList
+import dev.arildo.data.setlist.model.SetList
 
 class SetListAdapter(
     private var items: List<SetList>,

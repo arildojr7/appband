@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import dev.arildo.appband.core.base.BaseViewModel
-import com.arildojr.data.song.SongRepository
-import com.arildojr.data.song.exception.FailureRequestException
-import com.arildojr.data.song.exception.FailureRequestWithLocalDataException
-import com.arildojr.data.song.model.Song
+import dev.arildo.data.song.SongRepository
+import dev.arildo.data.song.exception.FailureRequestException
+import dev.arildo.data.song.exception.FailureRequestWithLocalDataException
+import dev.arildo.data.song.model.Song
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.random.Random

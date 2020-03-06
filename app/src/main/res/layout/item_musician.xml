@@ -7,7 +7,7 @@
 
         <variable
             name="musician"
-            type="com.arildojr.data.musician.model.Musician" />
+            type="dev.arildo.data.musician.model.Musician" />
 
         <variable
             name="adapter"

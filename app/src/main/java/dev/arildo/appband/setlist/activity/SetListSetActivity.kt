@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.lifecycle.Observer
-import com.arildojr.data.musician.model.Musician
-import com.arildojr.data.song.model.Song
+import dev.arildo.data.musician.model.Musician
+import dev.arildo.data.song.model.Song
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
 import dev.arildo.appband.databinding.ActivitySetListSetBinding

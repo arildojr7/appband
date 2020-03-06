@@ -3,7 +3,7 @@ package dev.arildo.appband.setlist.customview
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
-import com.arildojr.data.musician.model.Musician
+import dev.arildo.data.musician.model.Musician
 import dev.arildo.appband.R
 import dev.arildo.appband.setlist.adapter.SetListMusiciansAdapter
 import kotlinx.android.synthetic.main.dialog_select_musicians.view.*
@@ -50,4 +50,7 @@ class SelectMusiciansDialog {
             fun build() = dialog.createAlert(mContext)
         }
     }
+
+
+
 }

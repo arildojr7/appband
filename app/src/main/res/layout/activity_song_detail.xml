@@ -8,7 +8,7 @@
 
         <variable
             name="song"
-            type="com.arildojr.data.song.model.Song" />
+            type="dev.arildo.data.song.model.Song" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -2,7 +2,7 @@ package dev.arildo.appband
 
 import android.app.Application
 import dev.arildo.appband.core.di.getSongModules
-import com.arildojr.data.di.getDataModules
+import dev.arildo.data.di.getDataModules
 import com.facebook.stetho.Stetho
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

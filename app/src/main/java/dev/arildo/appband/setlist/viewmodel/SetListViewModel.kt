@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import dev.arildo.appband.core.base.BaseViewModel
-import com.arildojr.data.setlist.SetListRepository
-import com.arildojr.data.setlist.model.SetList
+import dev.arildo.data.setlist.SetListRepository
+import dev.arildo.data.setlist.model.SetList
 
 class SetListViewModel(private val setListRepository: SetListRepository) : BaseViewModel() {
 

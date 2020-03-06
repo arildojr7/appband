@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.arildojr.data.musician.model.Musician
-import com.arildojr.data.song.model.Song
 import dev.arildo.appband.core.bindingadapter.BindableAdapter
 import dev.arildo.appband.databinding.ItemMusicianBinding
 import dev.arildo.appband.databinding.ItemSetListSetSongBinding
+import dev.arildo.data.musician.model.Musician
 
 class SetListMusiciansAdapter(
     private var items: List<Musician>,

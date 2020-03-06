@@ -1,4 +1,4 @@
-package com.arildojr.data
+package dev.arildo.data
 
 import org.junit.Test
 

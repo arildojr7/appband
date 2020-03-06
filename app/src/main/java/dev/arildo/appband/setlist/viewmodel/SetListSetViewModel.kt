@@ -3,14 +3,14 @@ package dev.arildo.appband.setlist.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import com.arildojr.data.musician.MusicianRepository
-import com.arildojr.data.musician.model.Musician
-import com.arildojr.data.setlist.SetListRepository
-import com.arildojr.data.setlist.dto.SetListDTO
-import com.arildojr.data.song.SongRepository
-import com.arildojr.data.song.exception.FailureRequestException
-import com.arildojr.data.song.exception.FailureRequestWithLocalDataException
-import com.arildojr.data.song.model.Song
+import dev.arildo.data.musician.MusicianRepository
+import dev.arildo.data.musician.model.Musician
+import dev.arildo.data.setlist.SetListRepository
+import dev.arildo.data.setlist.dto.SetListDTO
+import dev.arildo.data.song.SongRepository
+import dev.arildo.data.song.exception.FailureRequestException
+import dev.arildo.data.song.exception.FailureRequestWithLocalDataException
+import dev.arildo.data.song.model.Song
 import dev.arildo.appband.core.base.BaseViewModel
 import kotlinx.coroutines.flow.collect
 

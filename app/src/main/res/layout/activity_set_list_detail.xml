@@ -7,7 +7,7 @@
 
         <variable
             name="setList"
-            type="com.arildojr.data.setlist.model.SetList" />
+            type="dev.arildo.data.setlist.model.SetList" />
 
     </data>
 
