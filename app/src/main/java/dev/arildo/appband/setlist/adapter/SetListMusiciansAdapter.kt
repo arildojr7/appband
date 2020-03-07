@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.arildo.appband.core.bindingadapter.BindableAdapter
 import dev.arildo.appband.databinding.ItemMusicianBinding
-import dev.arildo.appband.databinding.ItemSetListSetSongBinding
 import dev.arildo.data.musician.model.Musician
 
 class SetListMusiciansAdapter(

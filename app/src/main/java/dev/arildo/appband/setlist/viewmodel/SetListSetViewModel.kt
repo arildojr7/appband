@@ -88,10 +88,10 @@ class SetListSetViewModel(
         setListRepository.createSetList(
             SetListDTO(
                 selectedDateTimestamp,
+                _selectedMusicians.value?.map { it.id }.orEmpty(),
                 _selectedSongs.value?.map { it.id }.orEmpty()
             )
         )
-
     }
 
     fun addSelectedSong(song: Song) {
@@ -100,7 +100,6 @@ class SetListSetViewModel(
             add(song)
         }
         _selectedSongs.postValue(selectedSongs)
-
     }
 
     fun addSelectedMusician(musician: Musician) {
@@ -109,16 +108,10 @@ class SetListSetViewModel(
             add(musician)
         }
         _selectedMusicians.postValue(selectedMusicians)
-
     }
 
     fun setDateTimestamp(timestamp: Long) {
         selectedDateTimestamp = timestamp
     }
 
-    suspend fun filterSongs(filter: String?) {
-        songRepository.getSongsFiltered("%$filter%").collect { response ->
-            _songs.postValue(response.body())
-        }
-    }
 }
