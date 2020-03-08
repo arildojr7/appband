@@ -9,4 +9,9 @@
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+
+    <declare-styleable name="HtmlTextView">
+        <attr name="notesColor" format="string" />
+    </declare-styleable>
+
 </resources>

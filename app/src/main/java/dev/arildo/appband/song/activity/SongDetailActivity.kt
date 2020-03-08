@@ -17,14 +17,15 @@ import kotlin.math.absoluteValue
 class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.activity_song_detail) {
 
     companion object {
-        private const val MAX_SCROLL_SPEED = 40
+        private const val MAX_SCROLL_SPEED = 200
+        private const val MIN_SCROLL_SPEED = 50
     }
 
     private var scrollSpeed: Int = 0
     private val mHandler: Handler = Handler()
     val runnableScroll: Runnable = object : Runnable {
         override fun run() {
-            binding.webview.scrollBy(0, 1)
+            binding.svChords.scrollBy(0, 1)
             mHandler.postDelayed(
                 this,
                 (scrollSpeed - MAX_SCROLL_SPEED).toLong().absoluteValue
@@ -79,7 +80,7 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.acti
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 mHandler.removeCallbacks(runnableScroll)
 
-                if (progress != 0) {
+                if (progress != MIN_SCROLL_SPEED) {
                     scrollSpeed = progress
                     runnableScroll.run()
                 }
@@ -94,6 +95,11 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.acti
     private suspend fun showScrollSpeed() {
         TransitionManager.beginDelayedTransition(binding.clContainer)
         binding.clScrollSpeed.visibility = View.VISIBLE
+
+        if (binding.sbScrollSpeed.progress == MIN_SCROLL_SPEED) {
+            binding.sbScrollSpeed.progress = MIN_SCROLL_SPEED + 1
+        }
+
         delay(4_000)
         TransitionManager.beginDelayedTransition(binding.clContainer)
         binding.clScrollSpeed.visibility = View.GONE
