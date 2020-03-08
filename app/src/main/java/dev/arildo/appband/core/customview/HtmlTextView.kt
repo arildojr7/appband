@@ -13,7 +13,7 @@ class HtmlTextView @JvmOverloads constructor(context: Context, attrs: AttributeS
 
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.HtmlTextView, 0, 0)
-        notesColor = a.getString(R.styleable.HtmlTextView_notesColor)
+        notesColor = a.getString(R.styleable.HtmlTextView_notesColor)?.removeRange(1, 3)
 
         a.recycle()
     }
