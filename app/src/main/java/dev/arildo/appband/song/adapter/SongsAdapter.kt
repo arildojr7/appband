@@ -1,4 +1,4 @@
-package dev.arildo.appband.songlist.adapter
+package dev.arildo.appband.song.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

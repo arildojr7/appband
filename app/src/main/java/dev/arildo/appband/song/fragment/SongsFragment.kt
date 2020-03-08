@@ -1,4 +1,4 @@
-package dev.arildo.appband.songlist.fragment
+package dev.arildo.appband.song.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.lifecycle.Observer
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseFragment
 import dev.arildo.appband.databinding.SongsFragmentBinding
-import dev.arildo.appband.songlist.adapter.SongsAdapter
-import dev.arildo.appband.songlist.viewmodel.SongsViewModel
-import dev.arildo.appband.songlist.activity.SongDetailActivity
+import dev.arildo.appband.song.adapter.SongsAdapter
+import dev.arildo.appband.song.viewmodel.SongsViewModel
+import dev.arildo.appband.song.activity.SongDetailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

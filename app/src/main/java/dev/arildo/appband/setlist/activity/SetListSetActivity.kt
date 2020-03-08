@@ -15,7 +15,7 @@ import dev.arildo.appband.setlist.adapter.SetListSongsAdapter
 import dev.arildo.appband.setlist.customview.SelectMusiciansDialog
 import dev.arildo.appband.setlist.customview.SelectSongsDialog
 import dev.arildo.appband.setlist.viewmodel.SetListSetViewModel
-import dev.arildo.appband.songlist.activity.SongDetailActivity
+import dev.arildo.appband.song.activity.SongDetailActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

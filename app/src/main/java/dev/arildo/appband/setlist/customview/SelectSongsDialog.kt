@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import dev.arildo.data.song.model.Song
 import dev.arildo.appband.R
-import dev.arildo.appband.songlist.adapter.SongsAdapter
+import dev.arildo.appband.song.adapter.SongsAdapter
 import kotlinx.android.synthetic.main.dialog_select_songs.view.*
 
 class SelectSongsDialog {

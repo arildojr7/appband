@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        tools:context=".songlist.activity.SongDetailActivity">
+        tools:context=".song.activity.SongDetailActivity">
 
         <LinearLayout
             android:id="@+id/llTopHeader"
