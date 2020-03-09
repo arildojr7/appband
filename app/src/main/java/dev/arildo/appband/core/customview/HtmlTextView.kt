@@ -26,8 +26,8 @@ class HtmlTextView @JvmOverloads constructor(context: Context, attrs: AttributeS
     }
 
     private fun stylizeHtml(html: String?, notesColor: String?): String {
-        return html?.replace("\n", "<br />")
-            ?.replace(" ", "&nbsp;")
+        return html?.replace(" ", "&nbsp;")
+            ?.replace("\n", "<br />")
             ?.replace("<b>", "<font color='${notesColor}'><b>")
             ?.replace("</b>", "</b></font>").orEmpty()
     }
