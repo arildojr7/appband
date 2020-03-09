@@ -50,4 +50,9 @@ class SetListDetailActivity :
         binding.rvMusicians.adapter = adapterMusicians
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 }
