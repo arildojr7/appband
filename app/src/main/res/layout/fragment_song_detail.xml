@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="song"
+            type="dev.arildo.data.song.model.Song" />
+
+    </data>
+
+    <ScrollView
+        android:id="@+id/svChords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".song.fragment.SongDetailFragment">
+
+        <dev.arildo.appband.core.customview.HtmlTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto_mono"
+            android:text="@{song.chord}"
+            android:textColor="@color/black"
+            app:notesColor="@color/notesColor" />
+
+    </ScrollView>
+</layout>
+

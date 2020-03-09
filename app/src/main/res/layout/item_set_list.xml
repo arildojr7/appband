@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="setList"
+            type="dev.arildo.data.setlist.model.SetList" />
+
+        <variable
+            name="adapter"
+            type="dev.arildo.appband.setlist.adapter.SetListAdapter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_rounded_light_gray"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> adapter.onItemClicked(setList)}"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvSetListNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_bold"
+            android:text="@{@string/set_list_number(setList.number)}"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSetListDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_bold"
+            bind:longToDate="@{setList.date}"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSetListNumber"
+            tools:text="24/02/2020" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/noto_regular"
+            tools:text="- Music 1\n- Music 2\n- Music 3"
+            android:text="@{setList.songsNameList()}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSetListDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
