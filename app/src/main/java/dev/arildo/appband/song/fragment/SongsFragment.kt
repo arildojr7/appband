@@ -7,10 +7,12 @@ import android.widget.SearchView
 import androidx.lifecycle.Observer
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseFragment
+import dev.arildo.appband.core.util.BUNDLE
+import dev.arildo.appband.core.util.SONG
 import dev.arildo.appband.databinding.SongsFragmentBinding
+import dev.arildo.appband.song.activity.SongDetailActivity
 import dev.arildo.appband.song.adapter.SongsAdapter
 import dev.arildo.appband.song.viewmodel.SongsViewModel
-import dev.arildo.appband.song.activity.SongDetailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,21 +22,17 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
     SearchView.OnQueryTextListener {
 
     private val viewModel: SongsViewModel by inject()
-    private val adapter2 =
+    private val songsAdapter =
         SongsAdapter(emptyList()) {
             val bundle = Bundle()
-            bundle.putParcelable("song", it)
+            bundle.putParcelable(SONG, it)
             startActivity(Intent(context, SongDetailActivity::class.java).apply {
                 putExtra(
-                    "bundle",
+                    BUNDLE,
                     bundle
                 )
             })
         }
-
-    companion object {
-        fun newInstance() = SongsFragment()
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -42,7 +40,7 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
         binding.svSongFinder.setOnQueryTextListener(this)
 
         binding.rvSongs.apply {
-            adapter = adapter2
+            adapter = songsAdapter
 
             viewTreeObserver.addOnScrollChangedListener {
                 binding.llTopHeader.isSelected = this.canScrollVertically(-1)
@@ -73,7 +71,7 @@ class SongsFragment : BaseFragment<SongsFragmentBinding>(R.layout.songs_fragment
         launch {
             withContext(Dispatchers.Main) {
                 viewModel.songs.observe(viewLifecycleOwner, Observer {
-                    adapter2.setData(it)
+                    songsAdapter.setData(it)
                     binding.pbLoaderSongs.visibility = View.GONE
                 })
             }

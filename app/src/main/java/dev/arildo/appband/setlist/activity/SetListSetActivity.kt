@@ -9,6 +9,8 @@ import dev.arildo.data.musician.model.Musician
 import dev.arildo.data.song.model.Song
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
+import dev.arildo.appband.core.util.BUNDLE
+import dev.arildo.appband.core.util.SONG
 import dev.arildo.appband.databinding.ActivitySetListSetBinding
 import dev.arildo.appband.setlist.adapter.SetListMusiciansAdapter
 import dev.arildo.appband.setlist.adapter.SetListSongsAdapter
@@ -36,12 +38,9 @@ class SetListSetActivity : BaseActivity<ActivitySetListSetBinding>(R.layout.acti
 
     private val adapterSelectedSongs = SetListSongsAdapter(emptyList()) {
         val bundle = Bundle()
-        bundle.putParcelable("song", it)
+        bundle.putParcelable(SONG, it)
         startActivity(Intent(this, SongDetailActivity::class.java).apply {
-            putExtra(
-                "bundle",
-                bundle
-            )
+            putExtra(BUNDLE, bundle)
         })
     }
 

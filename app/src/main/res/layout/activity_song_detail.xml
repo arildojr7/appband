@@ -28,6 +28,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:title="@{song.title}"
+                app:subtitle="@{String.format(@string/format_tone, song.tone, song.singer)}"
                 android:minHeight="?attr/actionBarSize"
                 app:titleTextColor="@android:color/black" />
 
@@ -57,26 +59,16 @@
 
         </LinearLayout>
 
-        <ScrollView
-            android:id="@+id/svChords"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpSongs"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llTopHeader">
-
-            <dev.arildo.appband.core.customview.HtmlTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/roboto_mono"
-                android:text="@{song.chord}"
-                android:textColor="@color/black"
-                app:notesColor="@color/notesColor" />
-
-        </ScrollView>
+            app:layout_constraintTop_toBottomOf="@id/llTopHeader" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,9 +7,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseFragment
+import dev.arildo.appband.core.util.BUNDLE
+import dev.arildo.appband.core.util.SET_LIST
 import dev.arildo.appband.databinding.FragmentSetListBinding
-import dev.arildo.appband.setlist.activity.SetListSetActivity
 import dev.arildo.appband.setlist.activity.SetListDetailActivity
+import dev.arildo.appband.setlist.activity.SetListSetActivity
 import dev.arildo.appband.setlist.adapter.SetListAdapter
 import dev.arildo.appband.setlist.viewmodel.SetListViewModel
 import kotlinx.coroutines.Dispatchers
@@ -20,15 +22,14 @@ import org.koin.android.ext.android.inject
 class SetListFragment : BaseFragment<FragmentSetListBinding>(R.layout.fragment_set_list) {
 
     private val viewModel: SetListViewModel by inject()
-    private val adapter2 =
+    private val setListAdapter =
         SetListAdapter(emptyList()) { setList ->
             val bundle = Bundle()
-            bundle.putParcelable("setList", setList)
+            bundle.putParcelable(SET_LIST, setList)
             startActivity(
-                Intent(
-                    context,
-                    SetListDetailActivity::class.java
-                ).apply { putExtra("bundle", bundle) })
+                Intent(context, SetListDetailActivity::class.java).apply {
+                    putExtra(BUNDLE, bundle)
+                })
         }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -50,7 +51,7 @@ class SetListFragment : BaseFragment<FragmentSetListBinding>(R.layout.fragment_s
 
     private fun setupRecycler() {
         binding.rvSetLists.apply {
-            adapter = adapter2
+            adapter = setListAdapter
             layoutManager = GridLayoutManager(context, 2)
 
             viewTreeObserver.addOnScrollChangedListener {
@@ -69,16 +70,11 @@ class SetListFragment : BaseFragment<FragmentSetListBinding>(R.layout.fragment_s
         launch {
             withContext(Dispatchers.Main) {
                 viewModel.setList.observe(viewLifecycleOwner, Observer {
-                    adapter2.setData(it)
+                    setListAdapter.setData(it)
                     binding.pbLoaderSetLists.visibility = View.GONE
                 })
             }
         }
-    }
-
-    companion object {
-        fun newInstance() =
-            SetListFragment().apply {}
     }
 
     fun scrollToTop() {

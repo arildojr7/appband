@@ -7,28 +7,40 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.SeekBar
+import androidx.viewpager.widget.ViewPager
 import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
+import dev.arildo.appband.core.util.BUNDLE
+import dev.arildo.appband.core.util.POSITION
+import dev.arildo.appband.core.util.SET_LIST
+import dev.arildo.appband.core.util.SONG
 import dev.arildo.appband.databinding.ActivitySongDetailBinding
+import dev.arildo.appband.song.adapter.SongViewPagerAdapter
+import dev.arildo.data.setlist.model.SetList
+import dev.arildo.data.song.model.Song
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 
-class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.activity_song_detail) {
+class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.activity_song_detail),
+    ViewPager.OnPageChangeListener {
 
     companion object {
         private const val MAX_SCROLL_SPEED = 200
         private const val MIN_SCROLL_SPEED = 50
     }
 
+    private var setList: SetList? = null
+    private var initialPosition = 0
     private var scrollSpeed: Int = 0
     private val mHandler: Handler = Handler()
-    val runnableScroll: Runnable = object : Runnable {
+    private val runnableScroll: Runnable = object : Runnable {
         override fun run() {
-            binding.svChords.scrollBy(0, 1)
+            binding.vpSongs.scrollBy(0, 1)
+
             mHandler.postDelayed(
                 this,
-                (scrollSpeed - MAX_SCROLL_SPEED).toLong().absoluteValue
+                (scrollSpeed - MAX_SCROLL_SPEED).absoluteValue.toLong()
             )
         }
     }
@@ -36,14 +48,14 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.acti
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (intent.hasExtra("bundle")) {
-            val bundle = intent.getBundleExtra("bundle")
-            binding.song = bundle?.getParcelable("song")
-        }
+        intent.getBundleExtra(BUNDLE)?.run {
+            getParcelable<Song?>(SONG)?.let {
+                setList = SetList(song = listOf(it))
+            } ?: run {
+                setList = getParcelable(SET_LIST)
+            }
 
-        binding.toolbar.run {
-            title = binding.song?.title
-            subtitle = getString(R.string.format_tone, binding.song?.tone, binding.song?.singer)
+            initialPosition = getInt(POSITION)
         }
 
         setSupportActionBar(binding.toolbar)
@@ -51,6 +63,18 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.acti
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         setupSeekBar()
+        setupViewPager()
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        binding.song = setList?.song?.get(initialPosition)
+    }
+
+    private fun setupViewPager() {
+        binding.vpSongs.adapter = SongViewPagerAdapter(setList?.song, supportFragmentManager)
+        binding.vpSongs.addOnPageChangeListener(this)
+        binding.vpSongs.currentItem = initialPosition
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -78,18 +102,26 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.acti
     private fun setupSeekBar() {
         binding.sbScrollSpeed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                mHandler.removeCallbacks(runnableScroll)
+                stopAutoScroll()
 
-                if (progress != MIN_SCROLL_SPEED) {
-                    scrollSpeed = progress
-                    runnableScroll.run()
-                }
+                startAutoScroll(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
+    }
+
+    private fun stopAutoScroll() {
+        mHandler.removeCallbacks(runnableScroll)
+    }
+
+    private fun startAutoScroll(velocity: Int) {
+        if (velocity != MIN_SCROLL_SPEED) {
+            scrollSpeed = velocity
+            runnableScroll.run()
+        }
     }
 
     private suspend fun showScrollSpeed() {
@@ -103,6 +135,15 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding>(R.layout.acti
         delay(4_000)
         TransitionManager.beginDelayedTransition(binding.clContainer)
         binding.clScrollSpeed.visibility = View.GONE
+    }
+
+    override fun onPageScrollStateChanged(state: Int) {}
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+
+    override fun onPageSelected(position: Int) {
+        stopAutoScroll()
+        binding.song = setList?.song?.get(position)
     }
 
 }
