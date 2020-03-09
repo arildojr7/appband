@@ -6,6 +6,7 @@ import dev.arildo.appband.R
 import dev.arildo.appband.core.base.BaseActivity
 import dev.arildo.appband.databinding.ActivityMainBinding
 import dev.arildo.appband.home.fragment.HomeFragment
+import dev.arildo.appband.profile.fragment.ProfileFragment
 import dev.arildo.appband.setlist.fragment.SetListFragment
 import dev.arildo.appband.song.fragment.SongsFragment
 
@@ -28,6 +29,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 }
                 R.id.menu_set_list -> {
                     setFragment(MenuEnum.SET_LIST)
+                }
+                R.id.menu_profile -> {
+                    setFragment(MenuEnum.PROFILE)
                 }
             }
             true
@@ -65,8 +69,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 if (fragment != null) {
                     (fragment as SongsFragment).scrollToTop()
                 } else {
-                    fragment =
-                        SongsFragment()
+                    fragment = SongsFragment()
                     setFragment(fragment, MenuEnum.SONGS.name)
                 }
             }
@@ -77,15 +80,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 if (fragment != null) {
                     (fragment as SetListFragment).scrollToTop()
                 } else {
-                    fragment =
-                        SetListFragment()
+                    fragment = SetListFragment()
                     setFragment(fragment, MenuEnum.SET_LIST.name)
                 }
 
             }
 
             MenuEnum.PROFILE -> {
+                var fragment = supportFragmentManager.findFragmentByTag(MenuEnum.PROFILE.name)
 
+                if (fragment != null) {
+                    (fragment as ProfileFragment).scrollToTop()
+                } else {
+                    fragment = ProfileFragment()
+                    setFragment(fragment, MenuEnum.PROFILE.name)
+                }
             }
         }
     }

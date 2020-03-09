@@ -15,6 +15,7 @@
     <string name="select_song">Selecione a música</string>
     <string name="save_set_list">Salvar SetList</string>
     <string name="select_date">Selecionar Data</string>
+    <string name="logout">Logout</string>
     <string name="musicians">Músicos</string>
     <string name="date">Data</string>
 

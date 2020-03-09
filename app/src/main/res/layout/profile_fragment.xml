@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".profile.fragment.ProfileFragment">
+
+        <LinearLayout
+            android:id="@+id/llTopHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="12dp"
+            android:stateListAnimator="@animator/toolbar_elevation"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvAppBand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_bold"
+                android:text="@string/menu_profile"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/bgViewGreen"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/bg_round_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llTopHeader" />
+
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/bgViewGreen"
+            app:layout_constraintEnd_toEndOf="@id/bgViewGreen"
+            app:layout_constraintStart_toStartOf="@id/bgViewGreen"
+            app:layout_constraintTop_toTopOf="@id/bgViewGreen"
+            bind:cornerSize="@{75}"
+            bind:imageUrl='@{"https://douglasbrain.com/dreamtheater/wp-content/uploads/2017/07/petrucci.jpg"}' />
+
+        <TextView
+            android:id="@+id/tvMusicianName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/noto_bold"
+            android:includeFontPadding="false"
+            android:text="Arildo Borges Jr"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAvatar" />
+
+        <TextView
+            android:id="@+id/tvMusicianSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_regular"
+            android:includeFontPadding="false"
+            android:text="Violão/Guitarra"
+            android:textColor="@color/mediumGray"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMusicianName" />
+
+        <TextView
+            android:id="@+id/tvMusicianEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/noto_regular"
+            android:text="E-mail: sitesabj@gmail.com"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMusicianSubTitle" />
+
+        <TextView
+            android:id="@+id/tvMusicianPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_regular"
+            android:text="Senha: ***********"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMusicianEmail" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectDate"
+            style="@style/MaterialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:layout_weight="0.4"
+            android:backgroundTint="@color/red"
+            android:fontFamily="@font/noto_regular"
+            android:text="@string/logout"
+            android:textColor="@color/white"
+            app:cornerRadius="24dp"
+            app:icon="@drawable/ic_exit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMusicianPassword" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

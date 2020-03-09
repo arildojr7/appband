@@ -9,6 +9,7 @@
     <color name="lightGray">#DDEFEFEF</color>
     <color name="mediumGray">#7E7E7E</color>
     <color name="notesColor">#F09227</color>
+    <color name="red">#e60026</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>
