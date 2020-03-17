@@ -114,7 +114,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvMusicianEmail" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSelectDate"
+            android:id="@+id/btnLogout"
             style="@style/MaterialButton"
             android:layout_width="wrap_content"
             android:layout_height="56dp"

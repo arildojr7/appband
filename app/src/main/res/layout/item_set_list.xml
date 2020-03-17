@@ -46,7 +46,7 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSetListNumber"
-            tools:text="24/02/2020" />
+            tools:text="ter 24/02/2020" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,7 +55,9 @@
             android:fontFamily="@font/noto_regular"
             tools:text="- Music 1\n- Music 2\n- Music 3"
             android:text="@{setList.songsNameList()}"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            android:maxLines="4"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSetListDate" />
 

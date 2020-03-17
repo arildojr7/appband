@@ -20,11 +20,14 @@ android {
         debug {
             minifyEnabled false
             buildConfigField "String", "BASE_URL", "\"http://appband.us-east-1.elasticbeanstalk.com\""
+            buildConfigField "String", "BASIC_API", "\"Basic RlNhRW1ORWNnY2lWVkxjRUQzS05qbVBFR0Q4UVluUlc6SEJrZmxDM09FUUVCMW5IQlQ1U0RPSGRuNUtMQ3U1UGo=\""
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "\"http://appband.us-east-1.elasticbeanstalk.com\""
+            buildConfigField "String", "BASIC_API", "\"Basic RlNhRW1ORWNnY2lWVkxjRUQzS05qbVBFR0Q4UVluUlc6SEJrZmxDM09FUUVCMW5IQlQ1U0RPSGRuNUtMQ3U1UGo=\""
+
         }
     }
     androidExtensions {

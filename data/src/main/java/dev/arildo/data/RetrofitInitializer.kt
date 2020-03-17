@@ -1,5 +1,6 @@
 package dev.arildo.data
 
+import dev.arildo.data.login.api.LoginApiService
 import dev.arildo.data.musician.api.MusicianApiService
 import dev.arildo.data.setlist.api.SetListApiService
 import dev.arildo.data.song.api.SongApiService
@@ -46,5 +47,8 @@ class RetrofitInitializer {
 
     fun musicianApiService(): MusicianApiService =
         createNetworkClient().create(MusicianApiService::class.java)
+
+    fun loginApiService(): LoginApiService =
+        createNetworkClient().create(LoginApiService::class.java)
 
 }
