@@ -2,7 +2,7 @@ package dev.arildo.data.login.api
 
 import dev.arildo.data.BuildConfig
 import dev.arildo.data.login.dto.LoginDTO
-import dev.arildo.data.login.dto.User
+import dev.arildo.data.login.model.User
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers

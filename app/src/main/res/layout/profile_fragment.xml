@@ -5,6 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="dev.arildo.appband.profile.viewmodel.ProfileViewModel" />
 
     </data>
 
@@ -58,7 +61,7 @@
             app:layout_constraintStart_toStartOf="@id/bgViewGreen"
             app:layout_constraintTop_toTopOf="@id/bgViewGreen"
             bind:cornerSize="@{75}"
-            bind:imageUrl='@{"https://douglasbrain.com/dreamtheater/wp-content/uploads/2017/07/petrucci.jpg"}' />
+            bind:imageByteArray='@{viewModel.hexStringToByteArray(viewModel.user.photo)}' />
 
         <TextView
             android:id="@+id/tvMusicianName"
@@ -67,7 +70,8 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/noto_bold"
             android:includeFontPadding="false"
-            android:text="Arildo Borges Jr"
+            android:text="@{viewModel.user.name}"
+            tools:text="Arildo Borges Jr"
             android:textColor="@color/black"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +84,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_regular"
             android:includeFontPadding="false"
-            android:text="Violão/Guitarra"
+            tools:text="Violão/Guitarra"
+            android:text="@{viewModel.user.description}"
             android:textColor="@color/mediumGray"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/noto_regular"
-            android:text="E-mail: sitesabj@gmail.com"
+            android:text="@{String.format(@string/format_email, viewModel.user.email)}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"

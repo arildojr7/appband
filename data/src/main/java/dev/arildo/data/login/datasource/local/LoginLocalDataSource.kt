@@ -3,12 +3,16 @@ package dev.arildo.data.login.datasource.local
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
 import dev.arildo.data.login.LoginDataSource
-import dev.arildo.data.login.dto.User
+import dev.arildo.data.login.model.User
 
 class LoginLocalDataSource(private val sharedPref: SharedPreferences) : LoginDataSource.Local {
 
     override suspend fun isUserLogged(): Boolean {
         return sharedPref.contains(KEY_USER)
+    }
+
+    override suspend fun getLoggedUser(): User? {
+        return get<User>(KEY_USER)
     }
 
     override suspend fun saveLoggedUser(user: User) {

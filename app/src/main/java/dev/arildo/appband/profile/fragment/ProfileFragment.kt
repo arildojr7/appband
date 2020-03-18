@@ -17,6 +17,8 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>(R.layout.profile_fr
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        binding.viewModel = viewModel
+
         binding.btnLogout.setOnClickListener {
             launch {
                 viewModel.logout()

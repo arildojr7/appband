@@ -3,7 +3,7 @@ package dev.arildo.data.login
 import dev.arildo.data.login.datasource.local.LoginLocalDataSource
 import dev.arildo.data.login.datasource.remote.LoginRemoteDataSource
 import dev.arildo.data.login.dto.LoginDTO
-import dev.arildo.data.login.dto.User
+import dev.arildo.data.login.model.User
 import retrofit2.Response
 
 class LoginRepositoryImpl(
@@ -13,6 +13,10 @@ class LoginRepositoryImpl(
 
     override suspend fun isUserLogged(): Boolean {
         return localDataSource.isUserLogged()
+    }
+
+    override suspend fun getLoggedUser(): User? {
+        return localDataSource.getLoggedUser()
     }
 
     override suspend fun login(loginDTO: LoginDTO): Response<User> {

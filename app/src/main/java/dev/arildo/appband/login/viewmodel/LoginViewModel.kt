@@ -6,7 +6,7 @@ import androidx.lifecycle.Transformations
 import dev.arildo.appband.core.base.BaseViewModel
 import dev.arildo.data.login.LoginRepository
 import dev.arildo.data.login.dto.LoginDTO
-import dev.arildo.data.login.dto.User
+import dev.arildo.data.login.model.User
 import kotlinx.coroutines.delay
 
 class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewModel() {

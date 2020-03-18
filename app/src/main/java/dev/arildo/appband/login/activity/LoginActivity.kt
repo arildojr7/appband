@@ -28,7 +28,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
             launch {
                 viewModel.login(email, password)
             }
-//
         }
     }
 
