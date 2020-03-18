@@ -12,7 +12,7 @@ interface SongDao {
     @Query("SELECT * FROM songs ORDER BY title")
     fun getAll(): Flow<List<Song>>
 
-        @Query("SELECT * FROM songs WHERE title LIKE :filter")
+    @Query("SELECT * FROM songs WHERE title LIKE :filter")
     fun getAllFiltered(filter: String): Flow<List<Song>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

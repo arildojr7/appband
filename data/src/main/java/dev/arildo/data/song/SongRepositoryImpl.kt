@@ -26,7 +26,7 @@ class SongRepositoryImpl(private val songRemoteDataSource: SongRemoteDataSource,
                     songRemoteDataSource.getSongs().body()?.let { remote ->
                         if (!local.containsAll(remote)) {
                             insertAll(remote)
-                            emit(Response.success(remote+remote+remote+remote+remote+remote+remote+remote+remote+remote))
+                            emit(Response.success(remote))
                         }
                     }
                 } catch (e: Exception){

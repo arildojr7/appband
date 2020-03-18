@@ -16,14 +16,16 @@ import dev.arildo.data.setlist.datasource.remote.SetListRemoteDataSource
 import dev.arildo.data.song.SongRepository
 import dev.arildo.data.song.SongRepositoryImpl
 import dev.arildo.data.song.datasource.local.SongLocalDataSource
-import dev.arildo.data.song.datasource.local.database.SongDatabase
+import dev.arildo.data.AppDatabase
+import dev.arildo.data.setlist.datasource.local.SetListLocalDataSource
 import dev.arildo.data.song.datasource.remote.SongRemoteDataSource
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 private val dbModule = module {
-    single { SongDatabase(get()) }
-    single { get<SongDatabase>().songDao() }
+    single { AppDatabase(get()) }
+    single { get<AppDatabase>().songDao() }
+    single { get<AppDatabase>().setListDao() }
 }
 
 private val apiServiceModule = module {
@@ -36,7 +38,7 @@ private val apiServiceModule = module {
 private val repositoryModule = module {
     single<LoginRepository> { LoginRepositoryImpl(get(), get()) }
     single<SongRepository> { SongRepositoryImpl(get(), get()) }
-    single<SetListRepository> { SetListRepositoryImpl(get()) }
+    single<SetListRepository> { SetListRepositoryImpl(get(), get()) }
     single<MusicianRepository> { MusicianRepositoryImpl(get()) }
 }
 
@@ -46,6 +48,7 @@ private val dataSourceModule = module {
     single { SongRemoteDataSource(get()) }
     single { SongLocalDataSource(get()) }
     single { SetListRemoteDataSource(get()) }
+    single { SetListLocalDataSource(get()) }
     single { MusicianRemoteDataSource(get()) }
 }
 

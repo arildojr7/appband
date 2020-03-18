@@ -13,6 +13,7 @@
 
     <string name="format_tone">Tom: %s - %s</string>
     <string name="format_email">E-mail: %s</string>
+    <string name="password_mask">Senha: ***********</string>
     <string name="auto_scroll">Auto scroll</string>
 
     <string name="set_list_number">SetList #%s</string>
